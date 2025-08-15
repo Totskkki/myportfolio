@@ -706,22 +706,43 @@ footer .quicklinks a:hover {
   }
 }
 
+
 @media (max-width: 992px) {
   .navbar-collapse {
-    background-color: #fff; /* Light background */
+    display: block !important;
+    background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    padding: 1rem;
     margin-top: 0.5rem;
+
+  
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-6px);
+    overflow: hidden;
+    padding: 0 1rem;
+    transition: 
+      max-height 0.3s ease-in-out,
+      opacity 0.3s ease-in-out,
+      transform 0.3s ease-in-out,
+      padding 0.3s ease-in-out;
+  }
+
+  .navbar-collapse.show {
+    max-height: 500px; 
+    opacity: 1;
+    transform: translateY(0);
+    padding: 1rem;
   }
 
   .navbar-nav .nav-link {
     padding: 0.75rem 1rem;
     font-weight: 600;
     border-radius: 8px;
+    transition: background-color 0.25s ease;
   }
 
   .navbar-nav .nav-link:hover {
-    background-color: rgba(79, 70, 229, 0.1); /* match your theme */
+    background-color: var(--background-nav);
   }
 }
