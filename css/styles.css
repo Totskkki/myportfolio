@@ -9,6 +9,7 @@
   --navbar-bg: #ffffff;
   --navbar-text: #000000;
   --bs-gray:#2e2d2d;
+  --background-nav:rgba(79, 70, 229, 0.1);
 }
 *,
 *::before,
@@ -662,6 +663,7 @@ footer .quicklinks a:hover {
   .hero {
     flex-direction: column;
     padding: 2rem 1rem;
+    margin-top: 3rem;
   }
 }
 
@@ -705,7 +707,6 @@ footer .quicklinks a:hover {
     text-align: center;
   }
 }
-
 
 @media (max-width: 992px) {
   .navbar-collapse {
