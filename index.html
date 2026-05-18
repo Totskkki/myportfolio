@@ -1,349 +1,584 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Joven Rey | Porfolio</title>
+  <title>Joven Rey | Portfolio</title>
+  <meta name="description" content="Portfolio of Joven Rey Flores, Full-Stack Developer">
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Work+Sans:wght@300;400;500&display=swap"
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
 
-
-  <!-- Bootstrap Icons -->
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
-  <!-- Devicon (Tech Stack Icons) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+
   <!-- AOS CSS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+  <!-- Tailwind CSS v4 CDN -->
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 
+  <!-- Tailwind Config -->
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: 'Outfit', sans-serif;
+    }
+    @custom-variant dark (&:where(.dark, .dark *));
+  </style>
+
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 
-<body class="bg-gray-50 text-gray-900">
+<body
+  class="bg-slate-50 text-slate-800 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300 font-sans antialiased overflow-x-hidden">
 
-  <header>
-    <nav id="mainNav" class="navbar navbar-expand-lg navbar-light fixed-top">
-      <div class="container d-flex align-items-center justify-content-between">
+  <!-- Header -->
+  <header class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent py-4">
+    <div class="container mx-auto px-6 max-w-6xl flex justify-between items-center">
+      <a href="#home"
+        class="text-2xl font-bold tracking-tight text-indigo-600 dark:text-indigo-400 hover:scale-105 transition-transform duration-300">
+        MyPortfolio<span class="text-slate-800 dark:text-white">.</span>
+      </a>
 
-        <a class="navbar-brand fw-bold" href="#home">
-          MyPortfolio
-        </a>
-
-
-        <button class="navbar-toggler collapsed ms-auto" type="button" data-bs-toggle="collapse"
-          data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#home"
+          class="nav-link text-slate-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium transition-colors">Home</a>
+        <a href="#about"
+          class="nav-link text-slate-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium transition-colors">About</a>
+        <a href="#projects"
+          class="nav-link text-slate-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium transition-colors">Projects</a>
+        <a href="#contact"
+          class="nav-link text-slate-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium transition-colors">Contact</a>
+        <button id="darkModeToggle"
+          class="p-2 rounded-full bg-slate-200 dark:bg-gray-800 text-slate-600 dark:text-gray-300 hover:bg-slate-300 dark:hover:bg-gray-700 transition-colors"
+          aria-label="Toggle Dark Mode">
+          <i class="bi bi-moon-stars-fill dark:hidden"></i>
+          <i class="bi bi-sun-fill hidden dark:inline-block text-yellow-400"></i>
         </button>
+      </nav>
 
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-          </ul>
-          <button id="darkModeToggle" class="btn btn-outline-secondary ms-3">
-            <i class="bi bi-moon-fill"></i>
-          </button>
-        </div>
+      <!-- Mobile Menu Button -->
+      <button id="menu-btn" class="md:hidden text-2xl text-slate-800 dark:text-gray-100">
+        <i class="bi bi-list"></i>
+      </button>
+    </div>
 
-      </div>
-    </nav>
+    <!-- Mobile Nav -->
+    <div id="mobile-menu"
+      class="hidden md:hidden absolute top-full left-0 w-full bg-white dark:bg-gray-900 shadow-lg border-t border-gray-100 dark:border-gray-800 py-4 flex flex-col items-center gap-4">
+      <a href="#home"
+        class="w-full text-center py-2 hover:bg-slate-50 dark:hover:bg-gray-800 font-medium text-slate-600 dark:text-gray-300">Home</a>
+      <a href="#about"
+        class="w-full text-center py-2 hover:bg-slate-50 dark:hover:bg-gray-800 font-medium text-slate-600 dark:text-gray-300">About</a>
+      <a href="#projects"
+        class="w-full text-center py-2 hover:bg-slate-50 dark:hover:bg-gray-800 font-medium text-slate-600 dark:text-gray-300">Projects</a>
+      <a href="#contact"
+        class="w-full text-center py-2 hover:bg-slate-50 dark:hover:bg-gray-800 font-medium text-slate-600 dark:text-gray-300">Contact</a>
+    </div>
   </header>
 
-   <main>
-  
-  <!-- Home Section -->
-  <section id="home" class="hero">
-    <div class="container">
-      <div class="row align-items-center text-center text-lg-start">
-        <!-- Left Side Text -->
-        <div class="col-lg-6">
-          <h1 class="display-4 fw-bold">Web <span>Developer</span></h1>
-          <p class="lead my-3">
-            Hi! I'm Joven Rey Flores. A passionate web developer building
-            modern, responsive websites.
-          </p>
-
-          <!-- Social Links -->
-          <div class="d-flex gap-3 justify-content-center justify-content-lg-start mt-3">
-            <a href="https://www.linkedin.com/in/joven-rey-flores-17219a10a/" target="_blank"
-              class="btn btn-light btn-lg rounded-circle shadow-sm">
-              <i class="bi bi-linkedin fs-4 text-primary"></i>
-            </a>
-            <a href="https://github.com/Totskkki" target="_blank" class="btn btn-light btn-lg rounded-circle shadow-sm">
-              <i class="bi bi-github fs-4"></i>
-            </a>
-            <a href="JovenReyFloresCV.pdf" download class="btn btn-download shadow-sm">
-              <i class="bi bi-download me-2"></i>Download CV
-            </a>
-
-          </div>
-        </div>
-
-        <!-- Right Side Image -->
-        <div class="col-lg-6 mt-5 mt-lg-0 d-flex justify-content-center">
-          <div class="blob-wrapper">
-            <img src="assets/images/TOTS.png" alt="Profile" class="blob-image" />
-          </div>
-        </div>
+  <main>
+    <!-- Home Section -->
+    <section id="home" class="min-h-screen flex items-center pt-24 pb-12 relative overflow-hidden">
+      <!-- Background decorators -->
+      <div
+        class="absolute top-20 -left-20 w-72 h-72 bg-indigo-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob dark:opacity-20">
+      </div>
+      <div
+        class="absolute top-40 -right-20 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000 dark:opacity-20">
+      </div>
+      <div
+        class="absolute -bottom-8 left-40 w-72 h-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000 dark:opacity-20">
       </div>
 
-      <!-- Tech Stack -->
-      <div class="row mt-2 text-center align-items-center tech-stack-row">
-        <div class="col-auto">
-          <h3 class="tech-stack">Tech Stack</h3>
+      <div class="container mx-auto px-6 max-w-6xl relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+          <!-- Left Text -->
+          <div class="flex-1 text-center lg:text-left" data-aos="fade-up">
+            <h1 class="text-4xl lg:text-6xl font-extrabold leading-tight mb-6">
+              Crafting Modern Digital Experiences as a
+              <br class="hidden lg:block" />
+              <span id="typed-text"
+                class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400"></span>
+            </h1>
 
-        </div>
+            <p class="text-lg text-slate-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0">
+              Hi! I'm <strong class="text-slate-800 dark:text-gray-200">Joven Rey Flores</strong> — a passionate
+              developer focused on building scalable web applications with beautiful design and seamless user
+              experiences.
+            </p>
 
-        <div class="col d-flex flex-wrap gap-4 justify-content-center justify-content-lg-start tech-stack-icons">
-          <i class="devicon-html5-plain colored fs-2 devicon"></i>
-          <i class="devicon-css3-plain colored fs-2 devicon"></i>
-          <i class="devicon-javascript-plain colored fs-2 devicon"></i>
-          <i class="devicon-php-plain colored fs-2 devicon"></i>
-          <i class="devicon-mysql-plain colored fs-2 devicon"></i>
-          <i class="devicon-react-original colored fs-2 devicon"></i>
-          <i class="devicon-java-plain colored fs-2 devicon"></i>
-          <i class="devicon-python-plain colored fs-2 devicon"></i>
-          <i class="devicon-laravel-plain colored fs-2 devicon"></i>
-          <i class="devicon-tailwindcss-plain colored fs-2 devicon"></i>
-        </div>
-      </div>
-
-
-    </div>
-
-  </section>
-
-  <!-- About Section start-->
-  <section id="about" class="py-5">
-    <div class="container about-container" data-aos="fade-right">
-      <!-- Left: Image -->
-      <div class="about-image" data-aos="fade-right">
-        <img src="assets/images/about.jpg" alt="About Me">
-      </div>
-
-      <!-- Right: Text -->
-      <div class="about-text" data-aos="fade-left">
-        <h2 class="section-title" data-aos="zoom-in">
-          About Me
-        </h2>
-        <p class="intro-text" data-aos="fade-up">
-          I’m a full-stack web developer with a passion for creating modern,
-          responsive, and accessible websites. With experience in HTML, CSS,
-          JavaScript, and backend technologies, I help businesses bring their
-          digital ideas to life.
-        </p>
-
-        <ul class="info-list" data-aos="fade-up">
-          <li><strong>Birthday:</strong> 26 January 1993</li>
-          <li><strong>Phone:</strong> +639677819501</li>
-          <li><strong>Age:</strong> 31</li>
-          <li><strong>City:</strong> Koronadal City, South Cotabato, Philippines</li>
-          <li><strong>Degree:</strong> Bachelor</li>
-          <li><strong>Email:</strong> floresjovenrey26@gmail.com</li>
-          <li><strong>Freelance:</strong> Available</li>
-        </ul>
-
-        <p class="closing-text" data-aos="fade-up">
-          Beyond coding, I enjoy collaborating with clients to understand their vision,
-          experimenting with new technologies, and staying updated with the latest trends in web development.
-          My goal is to not just build websites, but to create digital solutions that make a real impact.
-        </p>
-      </div>
-    </div>
-  </section>
-  <!-- About Section end-->
-
-  <!-- Project Section start-->
-  <section id="projects" class="py-5 bg-light">
-    <div class="container">
-
-      <!-- Section Title -->
-      <div class="project-text">
-        <h2 class="section-title">Projects</h2>
-      </div>
-      <!-- Project 1 -->
-      <div class="row align-items-center mb-5">
-        <div class="col-md-6" data-aos="fade-right">
-          <div class="project-card">
-            <img src="assets/images/Untitled design.png" class="img-fluid rounded shadow-lg"
-              alt="Payroll Management App" />
-            <div class="project-overlay">
-              <a href="https://github.com/Totskkki/payrollphp" class="btn btn-outline-light" target="_blank"
-                rel="noopener noreferrer">
-                View Project
+            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4">
+              <a href="https://www.linkedin.com/in/joven-rey-flores-17219a10a/" target="_blank"
+                class="w-12 h-12 flex items-center justify-center rounded-full bg-white dark:bg-gray-800 text-indigo-600 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-gray-100 dark:border-gray-700">
+                <i class="bi bi-linkedin text-xl"></i>
+              </a>
+              <a href="https://github.com/Totskkki" target="_blank"
+                class="w-12 h-12 flex items-center justify-center rounded-full bg-white dark:bg-gray-800 text-slate-800 dark:text-white shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-gray-100 dark:border-gray-700">
+                <i class="bi bi-github text-xl"></i>
+              </a>
+              <a href="JovenReyFloresCV.pdf" download
+                class="group px-6 py-3 rounded-full bg-indigo-600 text-white font-medium shadow-lg shadow-indigo-600/30 hover:bg-indigo-700 hover:shadow-indigo-600/50 transition-all duration-300 flex items-center gap-2">
+                <i class="bi bi-download group-hover:-translate-y-1 transition-transform"></i>
+                Download CV
               </a>
             </div>
+
+            <!-- Tech Stack inline -->
+            <div
+              class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row items-center gap-6">
+              <span class="font-semibold text-slate-500 uppercase tracking-wider text-sm">Tech Stack</span>
+              <div class="flex flex-wrap justify-center gap-4 text-3xl">
+                <i class="devicon-html5-plain colored hover:scale-125 transition-transform cursor-pointer"></i>
+                <i class="devicon-css3-plain colored hover:scale-125 transition-transform cursor-pointer"></i>
+                <i class="devicon-javascript-plain colored hover:scale-125 transition-transform cursor-pointer"></i>
+                <i class="devicon-php-plain colored hover:scale-125 transition-transform cursor-pointer"></i>
+                <i class="devicon-mysql-plain colored hover:scale-125 transition-transform cursor-pointer"></i>
+                <i class="devicon-react-original colored hover:scale-125 transition-transform cursor-pointer"></i>
+                <i class="devicon-laravel-plain colored hover:scale-125 transition-transform cursor-pointer"></i>
+                <i class="devicon-tailwindcss-plain colored hover:scale-125 transition-transform cursor-pointer"></i>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="col-md-6" data-aos="fade-left">
-          <h4 class="fw-bold">Payroll Management System with Mobile App</h4>
-          <p>
-            A payroll system developed for <strong>JV Venus Tuna Products</strong> in General Santos City,
-            built with <strong>PHP</strong> and <strong>MySQL</strong>.
-            It automates salary computation, manages employee records, and enables real-time attendance tracking using
-            <strong>face detection technology</strong>.
-            The accompanying mobile app (built with React Native & Expo) provides employees with secure, on-the-go
-            access to their payroll information,
-            ensuring accurate and efficient processing.
-          </p>
-          <span class="badge bg-primary">HTML</span>
-          <span class="badge bg-success">CSS</span>
-          <span class="badge bg-warning text-dark">JavaScript</span>
-          <span class="badge bg-info text-dark">PHP</span>
-          <span class="badge bg-dark">MySQL</span>
-          <span class="badge bg-secondary">React Native (Expo)</span>
-          <span class="badge bg-danger">Face Recognition</span>
-        </div>
-      </div>
-      <!-- Project 2 -->
-      <div class="row align-items-center mb-5 flex-row-reverse">
-        <div class="col-md-6" data-aos="fade-left">
-          <div class="project-card">
-            <img src="assets/images/healthapp.png" class="img-fluid rounded shadow-lg" alt="Project 2" />
-            <div class="project-overlay">
-              <a href="https://github.com/Totskkki/mh_office" class="btn btn-outline-light" target="_blank"
-                rel="noopener noreferrer">View Project</a>
+
+          <!-- Right Image -->
+          <div class="flex-1 flex justify-center mt-10 lg:mt-0" data-aos="zoom-in" data-aos-delay="200">
+            <div class="blob-wrapper group">
+              <img src="assets/images/TOTS.png" alt="Profile"
+                class="blob-image group-hover:scale-105 transition-transform duration-500" />
             </div>
           </div>
         </div>
-        <div class="col-md-6" data-aos="fade-right">
-          <h4 class="fw-bold">Web Based Health Management System with Doctor's Scheduling app</h4>
-          <p>
-            A comprehensive health management platform for municipal and rural health offices, built with
-            <strong>PHP</strong> and <strong>MySQL</strong>.
-            It streamlines patient records, doctor scheduling, and medical services tracking in a single, centralized
-            system.
-            Designed to help doctors manage availability and give administrators real-time visibility into clinic
-            operations.
-            Uses Bootstrap 5 for a responsive, user-friendly interface.
-          </p>
-          <ul>
-            <li>Centralized patient records & visit history</li>
-            <li>Doctor availability & scheduling</li>
-            <li>Medical services tracking and reporting</li>
-            <li>Role-based access and audit logs</li>
-            <li>Responsive UI powered by Bootstrap 5</li>
-          </ul>
-
-
-          <span class="badge bg-info text-dark">Bootstrap 5</span>
-          <span class="badge bg-primary">HTML</span>
-          <span class="badge bg-success">CSS</span>
-          <span class="badge bg-warning text-dark">JavaScript</span>
-          <span class="badge bg-info text-dark">PHP</span>
-          <span class="badge bg-dark">MySQL</span>
-          <span class="badge bg-danger">Java</span>
-        </div>
       </div>
-      <!-- Project 3 -->
-      <div class="row align-items-center mb-5">
-        <div class="col-md-6" data-aos="fade-right">
-          <div class="project-card">
-            <img src="assets/images/3.jpg" class="img-fluid rounded shadow-lg" alt="Project 3" />
-            <div class="project-overlay">
-              <a href="#" class="btn btn-outline-light">View Project</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
+      <div class="container mx-auto px-6 max-w-6xl">
+        <div class="flex flex-col lg:flex-row gap-16 items-center">
+          <div class="lg:w-5/12" data-aos="fade-right">
+            <div class="relative rounded-2xl overflow-hidden shadow-2xl group">
+              <div
+                class="absolute inset-0 bg-indigo-600/10 group-hover:bg-transparent transition-colors duration-500 z-10">
+              </div>
+              <img src="assets/images/about.jpg" alt="About Me"
+                class="w-full h-auto transform group-hover:scale-105 transition-transform duration-700">
             </div>
           </div>
-        </div>
-        <div class="col-md-6" data-aos="fade-left">
-          <h4 class="fw-bold">BOLIG Mortuary System</h4>
-          <p>
-            A web-based management platform for mortuary services, developed using <strong>Laravel 12</strong> and
-            <strong>Filament v4</strong>.
-            It streamlines record-keeping for deceased profiles, contributions, and service transactions in a secure and
-            organized manner.
-            Administrators can manage member information, monitor service history, and generate reports, while ensuring
-            a responsive and user-friendly experience.
-          </p>
 
-          <span class="badge bg-primary">Laravel</span>
-          <span class="badge bg-success">Filament v4</span>
-          <span class="badge bg-info text-dark">PHP</span>
-          <span class="badge bg-dark">MySQL</span>
-        </div>
-      </div>
+          <div class="lg:w-7/12" data-aos="fade-left">
+            <div class="inline-block mb-6 group cursor-default">
+              <h2 class="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white">About Me</h2>
+              <div
+                class="h-1.5 w-0 bg-indigo-600 rounded-full mt-2 transition-all duration-500 ease-out group-hover:w-20">
+              </div>
+            </div>
 
+            <p class="text-lg text-slate-600 dark:text-gray-400 mb-10 leading-relaxed">
+              I’m a <strong class="text-indigo-600 dark:text-indigo-400 font-semibold">full-stack web developer</strong>
+              with a passion for creating modern, responsive, and accessible websites.
+              With experience in HTML, CSS, JavaScript, PHP, MySQL, Postgres, Python, and backend technologies, I help
+              businesses bring their digital ideas to life.
+            </p>
 
-    </div>
-  </section>
-  <!-- Project Section end-->
-
-
-  <!--Contact  Section  start-->
-  <section id="contact" class="py-5 bg-light">
-    <div class="container" data-aos="fade-up">
-      <div class="contact-text">
-        <h2 class="section-title">Contact Me</h2>
-      </div>
-
-
-      <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <div class="card shadow border-0">
-            <div class="card-body p-4">
-              <form>
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <input type="text" class="form-control form-control-lg" placeholder="Your Name" required>
-                  </div>
-                  <div class="col-md-6">
-                    <input type="email" class="form-control form-control-lg" placeholder="Your Email" required>
-                  </div>
-                  <div class="col-12">
-                    <textarea class="form-control form-control-lg" rows="5" placeholder="Your Message"
-                      required></textarea>
-                  </div>
-                  <div class="col-12 text-center">
-                    <button type="submit" class="btn btn-primary btn-lg px-5">
-                      <i class="bi bi-send-fill me-2"></i>Send Message
-                    </button>
-                  </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+              <!-- Item 1 -->
+              <div
+                class="group flex items-center gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-gray-800/40 border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-indigo-100 dark:hover:border-indigo-900/50 transition-all duration-300">
+                <div
+                  class="w-12 h-12 flex-shrink-0 rounded-xl bg-white dark:bg-gray-900 shadow-sm flex items-center justify-center text-indigo-600 dark:text-indigo-400 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
+                  <i class="bi bi-calendar-event text-xl"></i>
                 </div>
-              </form>
+                <div class="flex flex-col">
+                  <span
+                    class="text-xs font-semibold text-slate-400 dark:text-gray-500 uppercase tracking-wider">Birthday</span>
+                  <span class="text-slate-800 dark:text-gray-200 font-medium">26 Jan 1993</span>
+                </div>
+              </div>
+
+              <!-- Item 2 -->
+              <div
+                class="group flex items-center gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-gray-800/40 border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-indigo-100 dark:hover:border-indigo-900/50 transition-all duration-300">
+                <div
+                  class="w-12 h-12 flex-shrink-0 rounded-xl bg-white dark:bg-gray-900 shadow-sm flex items-center justify-center text-indigo-600 dark:text-indigo-400 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                  <i class="bi bi-telephone text-xl"></i>
+                </div>
+                <div class="flex flex-col">
+                  <span
+                    class="text-xs font-semibold text-slate-400 dark:text-gray-500 uppercase tracking-wider">Phone</span>
+                  <span class="text-slate-800 dark:text-gray-200 font-medium">+63 967 781 9501</span>
+                </div>
+              </div>
+
+              <!-- Item 3 -->
+              <div
+                class="group flex items-center gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-gray-800/40 border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-indigo-100 dark:hover:border-indigo-900/50 transition-all duration-300">
+                <div
+                  class="w-12 h-12 flex-shrink-0 rounded-xl bg-white dark:bg-gray-900 shadow-sm flex items-center justify-center text-indigo-600 dark:text-indigo-400 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
+                  <i class="bi bi-geo-alt text-xl"></i>
+                </div>
+                <div class="flex flex-col">
+                  <span
+                    class="text-xs font-semibold text-slate-400 dark:text-gray-500 uppercase tracking-wider">City</span>
+                  <span class="text-slate-800 dark:text-gray-200 font-medium">Koronadal City, PH</span>
+                </div>
+              </div>
+
+              <!-- Item 4 -->
+              <div
+                class="group flex items-center gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-gray-800/40 border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-indigo-100 dark:hover:border-indigo-900/50 transition-all duration-300">
+                <div
+                  class="w-12 h-12 flex-shrink-0 rounded-xl bg-white dark:bg-gray-900 shadow-sm flex items-center justify-center text-indigo-600 dark:text-indigo-400 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                  <i class="bi bi-mortarboard text-xl"></i>
+                </div>
+                <div class="flex flex-col">
+                  <span
+                    class="text-xs font-semibold text-slate-400 dark:text-gray-500 uppercase tracking-wider">Degree</span>
+                  <span class="text-slate-800 dark:text-gray-200 font-medium">Bachelor</span>
+                </div>
+              </div>
+
+              <!-- Item 5 -->
+              <div
+                class="group flex items-center gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-gray-800/40 border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-indigo-100 dark:hover:border-indigo-900/50 transition-all duration-300">
+                <div
+                  class="w-12 h-12 flex-shrink-0 rounded-xl bg-white dark:bg-gray-900 shadow-sm flex items-center justify-center text-indigo-600 dark:text-indigo-400 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
+                  <i class="bi bi-envelope text-xl"></i>
+                </div>
+                <div class="flex flex-col overflow-hidden">
+                  <span
+                    class="text-xs font-semibold text-slate-400 dark:text-gray-500 uppercase tracking-wider">Email</span>
+                  <a href="mailto:floresjovenrey26@gmail.com"
+                    class="text-slate-800 dark:text-gray-200 font-medium truncate hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">floresjovenrey26@gmail.com</a>
+                </div>
+              </div>
+
+              <!-- Item 6 -->
+              <div
+                class="group flex items-center gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-gray-800/40 border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-indigo-100 dark:hover:border-indigo-900/50 transition-all duration-300">
+                <div
+                  class="w-12 h-12 flex-shrink-0 rounded-xl bg-white dark:bg-gray-900 shadow-sm flex items-center justify-center text-indigo-600 dark:text-indigo-400 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                  <i class="bi bi-briefcase text-xl"></i>
+                </div>
+                <div class="flex flex-col">
+                  <span
+                    class="text-xs font-semibold text-slate-400 dark:text-gray-500 uppercase tracking-wider">Freelance</span>
+                  <span class="text-green-600 dark:text-green-400 font-semibold flex items-center gap-2">
+                    <span class="relative flex h-2 w-2">
+                      <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    Available
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-indigo-50/50 dark:bg-indigo-900/10 border-l-4 border-indigo-500 relative">
+              <i class="bi bi-quote absolute text-4xl text-indigo-200 dark:text-indigo-800/50 -top-2 left-2"></i>
+              <p class="text-slate-700 dark:text-gray-300 leading-relaxed italic relative z-10 pl-4">
+                "Beyond coding, I enjoy collaborating with clients to understand their vision, experimenting with new
+                technologies, and staying updated with the latest trends in web development. My goal is to not just
+                build
+                websites, but to create digital solutions that make a real impact."
+              </p>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <!--Contact Section end-->
-     
+    </section>
 
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 bg-slate-50 dark:bg-gray-950">
+      <div class="container mx-auto px-6 max-w-6xl">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white inline-block relative group cursor-default">
+            Featured Projects
+            <div
+              class="absolute -bottom-3 left-1/2 -translate-x-1/2 h-1.5 w-0 bg-indigo-600 rounded-full transition-all duration-500 ease-out group-hover:w-24">
+            </div>
+          </h2>
+        </div>
+
+        <div class="space-y-24">
+          <!-- Project 1 -->
+          <div class="flex flex-col md:flex-row items-center gap-10 group">
+            <div class="md:w-1/2 w-full" data-aos="fade-right">
+              <div class="relative overflow-hidden rounded-2xl shadow-xl">
+                <img src="assets/images/Untitled design.png" alt="Payroll App"
+                  class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500">
+                <div
+                  class="absolute inset-0 bg-gray-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+                  <a href="https://github.com/Totskkki/payrollphp" target="_blank"
+                    class="px-6 py-2 bg-white text-gray-900 font-semibold rounded-full hover:bg-indigo-600 hover:text-white transition-colors">View
+                    Project</a>
+                </div>
+              </div>
+            </div>
+            <div class="md:w-1/2 w-full" data-aos="fade-left">
+              <h3
+                class="text-2xl font-bold mb-4 text-slate-800 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                Payroll Management System</h3>
+              <div
+                class="bg-white dark:bg-gray-900 p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                <p class="text-slate-600 dark:text-gray-400 leading-relaxed">
+                  Developed for <strong>JV Venus Tuna Products</strong>. It automates salary computation, manages
+                  employee records, and enables real-time attendance tracking using <strong>face detection
+                    technology</strong>. Accompanied by a React Native app.
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-3 py-1.5 text-xs font-semibold bg-slate-100 text-slate-700 dark:bg-gray-800 dark:text-gray-300 rounded-lg">PHP</span>
+                <span
+                  class="px-3 py-1.5 text-xs font-semibold bg-slate-100 text-slate-700 dark:bg-gray-800 dark:text-gray-300 rounded-lg">MySQL</span>
+                <span
+                  class="px-3 py-1.5 text-xs font-semibold bg-slate-100 text-slate-700 dark:bg-gray-800 dark:text-gray-300 rounded-lg">JavaScript</span>
+                <span
+                  class="px-3 py-1.5 text-xs font-semibold bg-indigo-50 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300 rounded-lg">React
+                  Native</span>
+                <span
+                  class="px-3 py-1.5 text-xs font-semibold bg-red-50 text-red-700 dark:bg-red-900/30 dark:text-red-300 rounded-lg">Face
+                  Recognition</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="flex flex-col md:flex-row-reverse items-center gap-10 group">
+            <div class="md:w-1/2 w-full" data-aos="fade-left">
+              <div class="relative overflow-hidden rounded-2xl shadow-xl">
+                <img src="assets/images/healthapp.png" alt="Health App"
+                  class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500">
+                <div
+                  class="absolute inset-0 bg-gray-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+                  <a href="https://github.com/Totskkki/mh_office" target="_blank"
+                    class="px-6 py-2 bg-white text-gray-900 font-semibold rounded-full hover:bg-indigo-600 hover:text-white transition-colors">View
+                    Project</a>
+                </div>
+              </div>
+            </div>
+            <div class="md:w-1/2 w-full" data-aos="fade-right">
+              <h3
+                class="text-2xl font-bold mb-4 text-slate-800 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                Health Management System</h3>
+              <div
+                class="bg-white dark:bg-gray-900 p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                <p class="text-slate-600 dark:text-gray-400 mb-4 leading-relaxed">
+                  A comprehensive platform for municipal health offices. Streamlines patient records, doctor scheduling,
+                  and medical services tracking.
+                </p>
+                <ul class="text-sm text-slate-600 dark:text-gray-400 space-y-2">
+                  <li class="flex items-center gap-2"><i class="bi bi-check2-circle text-indigo-500"></i> Centralized
+                    patient records</li>
+                  <li class="flex items-center gap-2"><i class="bi bi-check2-circle text-indigo-500"></i> Doctor
+                    scheduling</li>
+                  <li class="flex items-center gap-2"><i class="bi bi-check2-circle text-indigo-500"></i> Role-based
+                    access</li>
+                </ul>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-3 py-1.5 text-xs font-semibold bg-slate-100 text-slate-700 dark:bg-gray-800 dark:text-gray-300 rounded-lg">Bootstrap
+                  5</span>
+                <span
+                  class="px-3 py-1.5 text-xs font-semibold bg-slate-100 text-slate-700 dark:bg-gray-800 dark:text-gray-300 rounded-lg">PHP</span>
+                <span
+                  class="px-3 py-1.5 text-xs font-semibold bg-slate-100 text-slate-700 dark:bg-gray-800 dark:text-gray-300 rounded-lg">MySQL</span>
+                <span
+                  class="px-3 py-1.5 text-xs font-semibold bg-orange-50 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300 rounded-lg">Java</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="flex flex-col md:flex-row items-center gap-10 group">
+            <div class="md:w-1/2 w-full" data-aos="fade-right">
+              <div class="relative overflow-hidden rounded-2xl shadow-xl">
+                <img src="assets/images/3.jpg" alt="Bolig Mortuary"
+                  class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500">
+                <div
+                  class="absolute inset-0 bg-gray-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+                  <span class="px-6 py-2 bg-white/90 text-gray-900 font-semibold rounded-full cursor-not-allowed">Coming
+                    Soon</span>
+                </div>
+              </div>
+            </div>
+            <div class="md:w-1/2 w-full" data-aos="fade-left">
+              <h3
+                class="text-2xl font-bold mb-4 text-slate-800 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                BOLIG Mortuary System</h3>
+              <div
+                class="bg-white dark:bg-gray-900 p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                <p class="text-slate-600 dark:text-gray-400 leading-relaxed">
+                  A web-based management platform for mortuary services, developed using <strong>Laravel 12</strong> and
+                  <strong>Filament v4</strong>. Streamlines record-keeping for deceased profiles, contributions, and
+                  transactions.
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-3 py-1.5 text-xs font-semibold bg-red-50 text-red-700 dark:bg-red-900/30 dark:text-red-300 rounded-lg">Laravel</span>
+                <span
+                  class="px-3 py-1.5 text-xs font-semibold bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300 rounded-lg">Filament
+                  v4</span>
+                <span
+                  class="px-3 py-1.5 text-xs font-semibold bg-slate-100 text-slate-700 dark:bg-gray-800 dark:text-gray-300 rounded-lg">PHP</span>
+                <span
+                  class="px-3 py-1.5 text-xs font-semibold bg-slate-100 text-slate-700 dark:bg-gray-800 dark:text-gray-300 rounded-lg">MySQL</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
+      <div class="container mx-auto px-6 max-w-4xl" data-aos="fade-up">
+        <div class="text-center mb-12">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white inline-block relative group cursor-default">
+            Let's Connect
+            <div
+              class="absolute -bottom-3 left-1/2 -translate-x-1/2 h-1.5 w-0 bg-indigo-600 rounded-full transition-all duration-500 ease-out group-hover:w-20">
+            </div>
+          </h2>
+          <p class="mt-8 text-slate-600 dark:text-gray-400">Have a project in mind or want to discuss opportunities?
+            Send me a message!</p>
+        </div>
+
+        <div
+          class="bg-slate-50 dark:bg-gray-800/50 p-8 md:p-12 rounded-3xl border border-gray-100 dark:border-gray-700">
+          <form>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label class="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-2">Your Name</label>
+                <input type="text"
+                  class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600 outline-none transition-shadow"
+                  placeholder="Juan Dela Cruz" required>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-2">Your Email</label>
+                <input type="email"
+                  class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600 outline-none transition-shadow"
+                  placeholder="juandelacruz@example.com" required>
+              </div>
+            </div>
+            <div class="mb-8">
+              <label class="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-2">Message</label>
+              <textarea rows="5"
+                class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600 outline-none transition-shadow resize-none"
+                placeholder="How can I help you?" required></textarea>
+            </div>
+            <div class="text-center">
+              <button type="submit"
+                class="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full font-semibold shadow-lg shadow-indigo-600/30 hover:shadow-indigo-600/50 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 mx-auto">
+                <i class="bi bi-send-fill"></i> Send Message
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
 
-
   <!-- Footer -->
-  <footer class="py-4 text-center">
-    <div class="quicklinks mb-5">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+  <footer class="bg-slate-900 dark:bg-black text-slate-300 py-16 border-t border-slate-800 dark:border-gray-800">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center mb-12">
+
+        <!-- Brand -->
+        <div class="text-center md:text-left">
+          <a href="#home"
+            class="text-2xl font-bold tracking-tight text-white hover:text-indigo-400 transition-colors inline-block mb-4">
+            MyPortfolio<span class="text-indigo-500">.</span>
+          </a>
+          <p class="text-slate-400 text-sm max-w-xs mx-auto md:mx-0 leading-relaxed">
+            Crafting scalable and beautiful web applications. Let's build something amazing together.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="flex flex-col items-center justify-center">
+          <h4 class="text-white font-semibold mb-6 uppercase tracking-wider text-sm">Quick Links</h4>
+          <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm font-medium">
+            <a href="#home" class="relative group hover:text-white transition-colors">
+              Home
+              <span
+                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-500 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#about" class="relative group hover:text-white transition-colors">
+              About
+              <span
+                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-500 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#projects" class="relative group hover:text-white transition-colors">
+              Projects
+              <span
+                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-500 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#contact" class="relative group hover:text-white transition-colors">
+              Contact
+              <span
+                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-500 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Socials -->
+        <div class="flex flex-col items-center md:items-end justify-center">
+          <h4 class="text-white font-semibold mb-6 uppercase tracking-wider text-sm">Connect</h4>
+          <div class="flex gap-4">
+            <a href="https://www.linkedin.com/in/joven-rey-flores-17219a10a/" target="_blank"
+              class="w-10 h-10 rounded-full bg-slate-800/80 flex items-center justify-center hover:bg-indigo-600 hover:text-white hover:shadow-[0_0_15px_rgba(79,70,229,0.5)] transition-all duration-300 hover:-translate-y-1">
+              <i class="bi bi-linkedin"></i>
+            </a>
+            <a href="https://github.com/Totskkki" target="_blank"
+              class="w-10 h-10 rounded-full bg-slate-800/80 flex items-center justify-center hover:bg-indigo-600 hover:text-white hover:shadow-[0_0_15px_rgba(79,70,229,0.5)] transition-all duration-300 hover:-translate-y-1">
+              <i class="bi bi-github"></i>
+            </a>
+            <a href="https://www.facebook.com/jovenreyflores" target="_blank"
+              class="w-10 h-10 rounded-full bg-slate-800/80 flex items-center justify-center hover:bg-indigo-600 hover:text-white hover:shadow-[0_0_15px_rgba(79,70,229,0.5)] transition-all duration-300 hover:-translate-y-1">
+              <i class="bi bi-facebook"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright -->
+      <div
+        class="pt-8 border-t border-slate-800/80 text-center flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-sm text-slate-500">&copy; <span id="current-year"></span> Joven Rey Flores. All rights reserved.
+        </p>
+        <p class="text-sm text-slate-500 flex items-center gap-2">
+          Designed with <i class="bi bi-heart-fill text-red-500 animate-pulse"></i> by Joven
+        </p>
+      </div>
     </div>
-    <p>Copyright &copy; 2025 JR-Flores</p>
   </footer>
 
-
-
+  <script src="js/scripts.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
 </body>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/scripts.js"></script>
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init({
-    duration: 1000,
-    // once: true   
-  });
-</script>
 
 </html>
