@@ -112,4 +112,59 @@ document.addEventListener('DOMContentLoaded', () => {
     if (yearElement) {
         yearElement.textContent = new Date().getFullYear();
     }
+
+    // Contact Form Submission (Netlify Forms via AJAX)
+    const contactForm = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const formStatus = document.getElementById('form-status');
+
+    if (contactForm && submitBtn && formStatus) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Clear previous status
+            formStatus.classList.add('hidden');
+            formStatus.className = 'mb-6 hidden px-4 py-3 rounded-xl text-sm font-medium text-center';
+
+            // Disable submit button & show loading state
+            submitBtn.disabled = true;
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="bi bi-hourglass-split animate-spin"></i> Sending...';
+
+            const myForm = e.target;
+            const formData = new FormData(myForm);
+
+            try {
+                const response = await fetch("/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams(formData).toString(),
+                });
+
+                if (response.ok) {
+                    showStatus('Message sent successfully! Thank you.', 'success');
+                    contactForm.reset();
+                } else {
+                    showStatus('Failed to send message. Please try again.', 'error');
+                }
+            } catch (err) {
+                console.error('Submission error:', err);
+                showStatus('Unable to connect to the server. Please check your network.', 'error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            }
+        });
+
+        function showStatus(message, type) {
+            formStatus.textContent = message;
+            formStatus.classList.remove('hidden');
+            if (type === 'success') {
+                formStatus.classList.add('bg-green-100', 'text-green-800', 'dark:bg-green-900/30', 'dark:text-green-300');
+            } else {
+                formStatus.classList.add('bg-red-100', 'text-red-800', 'dark:bg-red-900/30', 'dark:text-red-300');
+            }
+            formStatus.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }
 });
