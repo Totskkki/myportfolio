@@ -7,6 +7,53 @@
   --blob-gradient: conic-gradient(#ff7eb3, #7c4dff, #42a5f5, #ff7eb3);
 }
 
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+header {
+  width: 100%;
+  max-width: 100vw;
+}
+
+#mobile-menu {
+  display: none;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+#mobile-menu.is-open {
+  display: flex !important;
+}
+
+/* Mobile menu button — plain CSS so it shows reliably on small screens */
+#menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  #menu-btn {
+    display: none;
+  }
+
+  #mobile-menu {
+    display: none !important;
+  }
+}
+
 .blob-wrapper {
   position: relative;
   width: 280px;
@@ -91,5 +138,3 @@
 .animation-delay-4000 {
   animation-delay: 4s;
 }
-
-

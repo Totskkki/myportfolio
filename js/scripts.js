@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (menuBtn && mobileMenu) {
         menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+            const isOpen = mobileMenu.classList.toggle('is-open');
+            document.body.classList.toggle('menu-open', isOpen);
         });
     }
 
@@ -22,8 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     behavior: 'smooth'
                 });
                 // Close menu if open
-                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
+                if (mobileMenu && mobileMenu.classList.contains('is-open')) {
+                    mobileMenu.classList.remove('is-open');
+                    document.body.classList.remove('menu-open');
                 }
             }
         });

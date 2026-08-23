@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth overflow-x-hidden max-w-full">
 
 <head>
   <meta charset="UTF-8" />
@@ -37,18 +37,18 @@
 </head>
 
 <body
-  class="bg-slate-50 text-slate-800 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300 font-sans antialiased overflow-x-hidden">
+  class="bg-slate-50 text-slate-800 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300 font-sans antialiased overflow-x-hidden max-w-full">
 
   <!-- Header -->
-  <header class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent py-4">
-    <div class="container mx-auto px-6 max-w-6xl flex justify-between items-center">
+  <header class="fixed inset-x-0 top-0 z-50 transition-all duration-300 bg-transparent py-3 sm:py-4">
+    <div class="w-full max-w-6xl mx-auto px-3 sm:px-6 flex items-center justify-between gap-2 min-w-0 overflow-x-hidden">
       <a href="#home"
-        class="text-2xl font-bold tracking-tight text-indigo-600 dark:text-indigo-400 hover:scale-105 transition-transform duration-300">
+        class="text-base sm:text-xl md:text-2xl font-bold tracking-tight text-indigo-600 dark:text-indigo-400 transition-transform duration-300 min-w-0 truncate shrink">
         MyPortfolio<span class="text-slate-800 dark:text-white">.</span>
       </a>
 
       <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center gap-8">
+      <nav class="hidden md:flex items-center gap-8 flex-1 justify-center px-4">
         <a href="#home"
           class="nav-link text-slate-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium transition-colors">Home</a>
         <a href="#about"
@@ -57,53 +57,59 @@
           class="nav-link text-slate-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium transition-colors">Projects</a>
         <a href="#contact"
           class="nav-link text-slate-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium transition-colors">Contact</a>
-        <button id="darkModeToggle"
-          class="p-2 rounded-full bg-slate-200 dark:bg-gray-800 text-slate-600 dark:text-gray-300 hover:bg-slate-300 dark:hover:bg-gray-700 transition-colors"
-          aria-label="Toggle Dark Mode">
-          <i class="bi bi-moon-stars-fill dark:hidden"></i>
-          <i class="bi bi-sun-fill hidden dark:inline-block text-yellow-400"></i>
-        </button>
       </nav>
 
-      <!-- Mobile Menu Button -->
-      <button id="menu-btn" class="md:hidden text-2xl text-slate-800 dark:text-gray-100">
-        <i class="bi bi-list"></i>
-      </button>
+      <!-- Mobile controls + dark mode (always visible) -->
+      <div class="flex items-center gap-1.5 shrink-0">
+        <button id="darkModeToggle"
+          class="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-200 dark:bg-gray-800 text-slate-600 dark:text-gray-300 hover:bg-slate-300 dark:hover:bg-gray-700 transition-colors"
+          aria-label="Toggle Dark Mode">
+          <i class="bi bi-moon-stars-fill text-base sm:text-lg dark:hidden"></i>
+          <i class="bi bi-sun-fill hidden dark:inline-block text-base sm:text-lg text-yellow-400"></i>
+        </button>
+        <button type="button" id="menu-btn"
+          class="menu-btn items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-200 dark:bg-gray-800 text-slate-800 dark:text-gray-100 hover:bg-slate-300 dark:hover:bg-gray-700 transition-colors"
+          aria-label="Toggle Menu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+          </svg>
+        </button>
+      </div>
     </div>
 
     <!-- Mobile Nav -->
     <div id="mobile-menu"
-      class="hidden md:hidden absolute top-full left-0 w-full bg-white dark:bg-gray-900 shadow-lg border-t border-gray-100 dark:border-gray-800 py-4 flex flex-col items-center gap-4">
+      class="absolute top-full inset-x-0 z-50 bg-white dark:bg-gray-900 shadow-lg border-t border-gray-100 dark:border-gray-800 py-4 gap-1">
       <a href="#home"
-        class="w-full text-center py-2 hover:bg-slate-50 dark:hover:bg-gray-800 font-medium text-slate-600 dark:text-gray-300">Home</a>
+        class="block w-full text-center py-3 hover:bg-slate-50 dark:hover:bg-gray-800 font-medium text-slate-600 dark:text-gray-300">Home</a>
       <a href="#about"
-        class="w-full text-center py-2 hover:bg-slate-50 dark:hover:bg-gray-800 font-medium text-slate-600 dark:text-gray-300">About</a>
+        class="block w-full text-center py-3 hover:bg-slate-50 dark:hover:bg-gray-800 font-medium text-slate-600 dark:text-gray-300">About</a>
       <a href="#projects"
-        class="w-full text-center py-2 hover:bg-slate-50 dark:hover:bg-gray-800 font-medium text-slate-600 dark:text-gray-300">Projects</a>
+        class="block w-full text-center py-3 hover:bg-slate-50 dark:hover:bg-gray-800 font-medium text-slate-600 dark:text-gray-300">Projects</a>
       <a href="#contact"
-        class="w-full text-center py-2 hover:bg-slate-50 dark:hover:bg-gray-800 font-medium text-slate-600 dark:text-gray-300">Contact</a>
+        class="block w-full text-center py-3 hover:bg-slate-50 dark:hover:bg-gray-800 font-medium text-slate-600 dark:text-gray-300">Contact</a>
     </div>
   </header>
 
-  <main>
+  <main class="overflow-x-hidden max-w-full">
     <!-- Home Section -->
-    <section id="home" class="min-h-screen flex items-center pt-24 pb-12 relative overflow-hidden">
+    <section id="home" class="min-h-screen flex items-center pt-20 sm:pt-24 pb-12 relative overflow-hidden">
       <!-- Background decorators -->
       <div
-        class="absolute top-20 -left-20 w-72 h-72 bg-indigo-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob dark:opacity-20">
+        class="absolute top-20 -left-10 sm:-left-20 w-48 sm:w-72 h-48 sm:h-72 bg-indigo-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob dark:opacity-20">
       </div>
       <div
-        class="absolute top-40 -right-20 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000 dark:opacity-20">
+        class="absolute top-40 -right-10 sm:-right-20 w-48 sm:w-72 h-48 sm:h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000 dark:opacity-20">
       </div>
       <div
-        class="absolute -bottom-8 left-40 w-72 h-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000 dark:opacity-20">
+        class="absolute -bottom-8 left-20 sm:left-40 w-48 sm:w-72 h-48 sm:h-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000 dark:opacity-20">
       </div>
 
-      <div class="container mx-auto px-6 max-w-6xl relative z-10">
+      <div class="container mx-auto px-4 sm:px-6 max-w-6xl relative z-10 w-full">
         <div class="flex flex-col lg:flex-row items-center gap-12">
           <!-- Left Text -->
-          <div class="flex-1 text-center lg:text-left" data-aos="fade-up">
-            <h1 class="text-4xl lg:text-6xl font-extrabold leading-tight mb-6">
+          <div class="flex-1 text-center lg:text-left min-w-0 w-full" data-aos="fade-up">
+            <h1 class="text-3xl sm:text-4xl lg:text-6xl font-extrabold leading-tight mb-6 break-words">
               Crafting Modern Digital Experiences as a
               <br class="hidden lg:block" />
               <span id="typed-text"
@@ -125,7 +131,7 @@
                 class="w-12 h-12 flex items-center justify-center rounded-full bg-white dark:bg-gray-800 text-slate-800 dark:text-white shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-gray-100 dark:border-gray-700">
                 <i class="bi bi-github text-xl"></i>
               </a>
-              <a href="ATS-Resume.pdf" download
+              <a href="FloresJovenRey_Resume.pdf" download
                 class="group px-6 py-3 rounded-full bg-indigo-600 text-white font-medium shadow-lg shadow-indigo-600/30 hover:bg-indigo-700 hover:shadow-indigo-600/50 transition-all duration-300 flex items-center gap-2">
                 <i class="bi bi-download group-hover:-translate-y-1 transition-transform"></i>
                 Download CV
